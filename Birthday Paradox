@@ -1,0 +1,32 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+
+        float x = 1.0;
+        int people = 0;
+
+        float num = 365;
+        float denum = 365;
+
+        float p;
+        cin >> p;
+
+        //Corner case
+        if(p==1) {
+                cout << "365" << endl;
+                return 0;
+        }
+
+        //For general cases
+        while(x > 1-p) {
+                x *= (num/denum);
+                num--;
+                people++;
+        }
+
+        cout << people << endl;
+
+        return 0;
+}
