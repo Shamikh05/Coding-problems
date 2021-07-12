@@ -1,0 +1,45 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+// To calculate the sum of digits of number
+int digitsSum(int x) {
+        int result = 0;
+        while(x) {
+                int rem = x % 10;
+                x = x / 10;
+                result += rem;
+        }
+        return result;
+}
+
+// To calculate the sum of prime factors of the number
+int primeSum(int x) {
+        int sum = 0;
+        int i=2;
+        while(x>1) {
+                if(x % i==0) {
+                        x = x/i;
+                        sum += digitsSum(i);
+                }
+                else {
+                        i++;
+                }
+        }
+        return sum;
+}
+
+int main() {
+
+        int n;
+        cin >> n;
+
+        if(digitsSum(n)==primeSum(n)) {
+                cout << "1" << endl;
+        }
+        else {
+                cout << "0" << endl;
+        }
+
+        return 0;
+}
