@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--) {
+		int n;
+		cin >> n;
+		
+		//answer is number of set bits in binary representation of n
+
+		//For example n = 13 then its binary representation is 1101 then no. of set bits = total no.
+		// of moves = 3 because bits are represented in 2^k form where k = 0,1,2,3,....,log(n)
+
+		int result = 0;
+		while(n) {
+			bool last_bit = (n & 1);
+			if(last_bit) {
+				result++;
+			}
+			n = (n >> 1);
+		}
+		cout << result << endl;
+	}
+	return 0;
+}
