@@ -1,0 +1,29 @@
+#include<iostream>
+#include<algorithm>
+#include<queue>
+#include<cmath>
+using namespace std;
+int main(){
+	priority_queue<long long> pq;
+	int q, k;
+	cin >> q >> k;
+	while(q!=0){
+		int n;
+		cin >> n;
+		if(n==1){
+			int x, y;
+			cin >> x >> y;
+			long long distance;
+			distance = (pow(x,2) + pow(y,2));
+			pq.push(distance);
+			if(pq.size() > k){
+				pq.pop();
+			}
+		}
+		else{
+			cout << pq.top() << endl;
+		}
+		q--;
+	}
+	return 0;
+}
