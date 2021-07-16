@@ -1,0 +1,33 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+
+        int n;
+        cin >> n;
+
+        int ans = 0;
+        int pos = 0;
+        int digit = 0;
+
+        while(n) {
+
+                int rem = n % 10;
+
+                if(rem==7) {
+                        ans += pow(2,pos);
+                }
+
+                n = n / 10;
+                digit++;
+                pos++;
+        }
+
+        ans += (pow(2,digit)-2);
+
+        cout << ans + 1 << endl;
+
+        return 0;
+
+}
