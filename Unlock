@@ -1,0 +1,38 @@
+#include<iostream>
+#include<algorithm>
+#include<queue>
+#include<map>
+using namespace std;
+int main() {
+	priority_queue<int> pq;
+	map<int, int> m;
+	int n, k;
+	cin >> n >> k;
+	int arr[n];
+	for(int i=0;i<n;i++) {
+		cin >> arr[i];
+		pq.push(arr[i]);
+		m[arr[i]] = i;
+	}
+	int s=0;
+	int temp=0;
+	for(int i=0;i<k;i++) {
+		int p = pq.top();
+		pq.pop();
+		if(arr[s]!=p) {
+			auto it = m.find(p);
+			m[arr[s]] = it->second;
+			temp = arr[s];
+			arr[s] = arr[it->second];
+			arr[it->second] = temp;
+			s++;
+		}
+		else {
+			s++;
+			i--;
+		}
+	}
+	for(int i=0;i<n;i++) {
+		cout << arr[i] << " ";
+	}
+}
