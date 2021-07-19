@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+#define MAX 1000000000
+
+int main() {
+
+        int t;
+        cin >> t;
+
+        int n, k, occ;
+
+        while(t--) {
+
+                cin >> n >> k;
+
+                int ans = MAX;
+
+                for(int i=2;i*i<=k;i++) {
+
+                        if(k%i==0) {
+                                occ = 0;
+                                while(k%i==0) {
+                                        occ++;
+                                        k = k/i;
+                                }
+
+                                int cnt = 0;
+                                int p = i;
+                                while(p <= n) {
+                                        cnt += n / p;
+                                        p = p * i;
+                                }
+
+                                ans = min(ans,cnt/occ);
+                        }
+
+                }
+
+                if(k > 1) {
+                        int p = k;
+                        int cnt = 0;
+
+                        while(p<=n) {
+                                cnt += n/p;
+                                p *= k;
+                        }
+
+                        ans = min(ans,cnt);
+                }
+
+                if(ans==MAX) {
+                        ans = 0;
+                }
+
+                cout << ans << endl;
+
+        }
+
+        return 0;
+}
