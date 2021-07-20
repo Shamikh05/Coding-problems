@@ -1,0 +1,42 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+
+public class Main {
+
+    static BigInteger fact(int n) {
+
+        BigInteger b = new BigInteger("1");
+
+        for(int i=2;i<=n;i++) {
+            b = b.multiply(BigInteger.valueOf(i));
+        }
+
+        return b;
+    }
+
+	public static void main(String[] args) {
+
+	    Scanner sc = new Scanner(System.in);
+
+	    int t = sc.nextInt();
+	    
+	    while(t>0) {
+	        
+	        int n = sc.nextInt();
+	        int k = sc.nextInt();
+	        
+	        BigInteger numerator = fact(n-1);
+	        BigInteger denominator1 = fact(k-1);
+	        BigInteger denominator2 = fact(n-k);
+	        
+	        BigInteger a = denominator1.multiply(denominator2);
+	        BigInteger ans = numerator.divide(a);
+	        
+	        System.out.println(ans);
+	        
+	        t--;
+	        
+	    }
+	}
+}
