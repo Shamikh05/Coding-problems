@@ -1,0 +1,33 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+
+public class CP-21_Catalan_Numbers {
+
+    static BigInteger fact(int n) {
+
+        BigInteger b = new BigInteger("1");
+
+        for(int i=2;i<=n;i++) {
+            b = b.multiply(BigInteger.valueOf(i));
+        }
+
+        return b;
+    }
+
+	public static void main(String[] args) {
+
+	    Scanner sc = new Scanner(System.in);
+
+	    int n = sc.nextInt();
+
+	    BigInteger numerator = fact(2*n);
+	    BigInteger denominator1 = fact(n+1);
+	    BigInteger denominator2 = fact(n);
+
+	    BigInteger a = denominator1.multiply(denominator2);
+	    BigInteger ans = numerator.divide(a);
+
+		System.out.println(ans);
+	}
+}
