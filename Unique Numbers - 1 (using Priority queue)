@@ -1,0 +1,26 @@
+#include<iostream>
+#include<algorithm>
+#include<queue>
+using namespace std;
+int main() {
+	priority_queue<int> pq;
+	int n;
+	cin >> n;
+	int arr[n];
+	for(int i=0;i<n;i++) {
+		cin >> arr[i];
+		pq.push(arr[i]);
+	}
+	n = (n/2) + 1;
+	for(int i=0;i<n;i++) {
+		int p1 = pq.top();
+		pq.pop();
+		int p2 = pq.top();
+		pq.pop();
+		if(p1!=p2) {
+			cout << p1;
+			break;
+		}
+	}
+	return 0;
+}
