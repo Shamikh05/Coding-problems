@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int main() {
+	int n;
+	cin >> n;
+	int a[n];
+	int res = 0;
+	for(int i=0;i<n;i++) {
+		cin >> a[i];
+		res ^= a[i];
+	}
+	//res will contain the result of x^y. We want a and b independently.
+	int temp = res;
+	int pos = 0;
+	//now we will extract the 1st 1 digit from right and also store its position
+	while((temp&1)==0) {
+		temp = temp>>1;
+		pos++;
+	}
+	int mask = 1<<pos;   //suppose pos=2 then it will give 100
+	//now we will xor all the numbers which have 1 at 'pos'th position from right
+	int x = 0, y = 0;
+	for(int i=0;i<n;i++) {
+		if((a[i]&mask)>0) {
+			x ^= a[i];    //gives the first result
+		}
+	}
+	y = res^x;  //gives the second result
+	cout << min(x,y) << " " << max(x,y) << endl;  //printing both the results (We have to print smaller number first)
+}
