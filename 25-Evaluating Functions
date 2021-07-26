@@ -1,0 +1,50 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+
+public class Main {
+
+    static BigInteger mulBig(BigInteger x, BigInteger y) {
+
+        return x.multiply(y);
+    }
+
+    static BigInteger evaluate_hx(BigInteger x) {
+
+        BigInteger sum = BigInteger.valueOf(0);
+
+        sum = sum.add(mulBig(x,x).multiply(BigInteger.valueOf(3)));
+        sum = sum.subtract(x);
+        sum = sum.add(BigInteger.valueOf(10));
+
+        return sum;
+    }
+
+    static BigInteger evaluate_gx(BigInteger x) {
+
+
+        BigInteger sum = BigInteger.valueOf(0);
+
+        BigInteger res = mulBig(x,x).multiply(BigInteger.valueOf(4));
+        sum = sum.add(res.multiply(x));
+        sum = sum.add(mulBig(x,x).multiply(BigInteger.valueOf(2)));
+        sum = sum.subtract(x.multiply(BigInteger.valueOf(5)));
+        sum = sum.add(BigInteger.valueOf(4));
+
+        return sum;
+
+    }
+
+	public static void CP-25_Evaluating_Functions(String[] args) {
+
+	    Scanner sc = new Scanner(System.in);
+
+	    BigInteger x = sc.nextBigInteger();
+
+	    BigInteger h = evaluate_hx(x);
+	    BigInteger g = evaluate_gx(x);
+
+
+	    System.out.println(h.add(g));
+	}
+}
