@@ -1,0 +1,45 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+#define MAX 1000005
+
+vector<long long int> primes(500000);
+
+void set_primes() {
+
+	primes[0] = 0;
+
+	long long int k = 1;
+
+	long long int a[MAX] = {0};
+
+	for(long long int i=2;i<MAX;i++) {
+
+		if(a[i]==0) {
+
+			primes[k] = i;
+			k++;
+
+			for(long long int j=i*i;j<MAX;j+=i) {
+				a[j] = 1;
+			}
+		}
+	}
+
+	a[0] = 1;
+	a[1] = 1;
+
+}
+
+int main() {
+
+	set_primes();
+
+	int n;
+	cin >> n;
+		
+	cout << primes[n] << endl;
+
+	return 0;
+}
